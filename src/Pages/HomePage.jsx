@@ -53,16 +53,12 @@ const HomePage = () => {
 
   return (
     <section className="w-screen h-screen overflow-hidden bg-black">
-      {/* ✅ Sidebar */}
       <div className={`fixed top-0 left-0 h-full bg-gray-900 shadow-lg z-30 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 md:translate-x-0 md:w-64`}>
         <SideBar />
       </div>
 
-      {/* ✅ Main Content */}
       <div className={`flex flex-col h-full ${isSidebarOpen ? 'ml-64' : 'ml-0'} transition-all duration-300 md:ml-64`}>
-        {/* ✅ Navbar */}
         <div className="h-20 bg-black shadow-md fixed top-0 left-0 right-0 z-20 flex items-center px-6 md:left-64">
-          {/* ✅ Menu Button for Small Screens */}
           <button
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             className="md:hidden text-gray-300 mr-4"
@@ -72,12 +68,10 @@ const HomePage = () => {
           <NavBar />
         </div>
 
-        {/* ✅ Main Content Area */}
         <div className="flex-1 overflow-y-auto mt-20 p-6 bg-black">
           <SongList />
         </div>
 
-        {/* ✅ Music Player */}
         <div className="fixed bottom-0 left-0 right-0 h-20 bg-black shadow-md z-20 md:left-64">
           <MusicPlayer />
         </div>

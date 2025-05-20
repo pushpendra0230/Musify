@@ -639,7 +639,6 @@ const MusicPlayer = () => {
   const [elapsedTime, setElapsedTime] = useState(0);
   const [totalDuration, setTotalDuration] = useState(0);
 
-  // ✅ Handle playing new track
   useEffect(() => {
     if (currentTrack && audioElement.current) {
       if (globalAudioElement && globalAudioElement !== audioElement.current) {
@@ -653,7 +652,6 @@ const MusicPlayer = () => {
     }
   }, [currentTrack]);
 
-  // ✅ Handle Play/Pause button
   const handlePlayPause = () => {
     if (audioElement.current) {
       if (playing) {
@@ -665,24 +663,20 @@ const MusicPlayer = () => {
     }
   };
 
-  // ✅ Handle track time updates
   const updateTime = () => {
     setElapsedTime(audioElement.current?.currentTime || 0);
   };
 
-  // ✅ Handle track metadata loading
   const loadMetadata = () => {
     setTotalDuration(audioElement.current?.duration || 0);
   };
 
-  // ✅ Format time to `mm:ss`
   const formatDuration = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
   };
 
-  // ✅ Handle seeking in progress bar
   const handleProgressBarClick = (e) => {
     if (audioElement.current && totalDuration) {
       const clickPosition = e.nativeEvent.offsetX;
@@ -693,20 +687,17 @@ const MusicPlayer = () => {
     }
   };
 
-  // ✅ Check if current track is in favorites
   const isFavorite = currentTrack && favorites.some((fav) => fav.id === currentTrack.id);
 
   return (
     <div className="fixed bottom-0 left-0 right-0 h-20 flex items-center justify-between px-4 md:px-8 border-t bg-gradient-to-r from-emerald-700 via-green-500 to-lime-400 shadow-lg">
 
-      {/* ✅ Audio Element */}
       <audio
         ref={audioElement}
         onTimeUpdate={updateTime}
         onLoadedMetadata={loadMetadata}
       />
 
-      {/* ✅ Song Info */}
       <div className="flex items-center space-x-3 w-1/3 ml-4 md:ml-60">
         <img
           src={currentTrack?.image || "https://img.icons8.com/?size=96&id=UpZw1qeZM751&format=png"}
@@ -723,9 +714,7 @@ const MusicPlayer = () => {
         </div>
       </div>
 
-      {/* ✅ Play/Pause and Progress Bar */}
       <div className="flex-1 flex flex-col items-center max-w-md mr-4 md:mr-24 lg:mr-40 xl:mr-100">
-        {/* ✅ Play/Pause Button */}
         <button
           className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold hover:bg-green-600 transition"
           onClick={handlePlayPause}
@@ -733,7 +722,6 @@ const MusicPlayer = () => {
           {playing ? '❚❚' : '▶'}
         </button>
 
-        {/* ✅ Progress Bar (Visible in Mobile) */}
         <div className="flex items-center space-x-2 mt-2 w-full">
           <span className="text-xs text-white w-8 text-center">
             {formatDuration(elapsedTime)}
@@ -757,7 +745,6 @@ const MusicPlayer = () => {
         </div>
       </div>
 
-      {/* ✅ Favorite Button */}
       <button
         onClick={() => currentTrack && toggleFavorite(currentTrack)}
         className="text-2xl w-10 h-10 flex items-center justify-center hover:bg-green-300 rounded transition"

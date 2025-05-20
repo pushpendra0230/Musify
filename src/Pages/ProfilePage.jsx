@@ -353,15 +353,12 @@ const Sections = ({ id, title, children }) => (
 const CardComponent = () => {
     return (
         // <div className="flex bg-gradient-to-r from-orange-500 via-yellow-400 to-red-500 text-white h-screen overflow-hidden">
-        //     {/* ✅ Sidebar */}
         //     <div className="w-64 fixed h-full">
         //         <SideBar />
         //     </div>
 
-        //     {/* ✅ Main Content */}
         <div className="min-h-screen bg-gradient-to-r from-orange-500 via-yellow-400 to-red-500">
             <div className="h-full">
-                {/* ✅ Navbar */}
                 <NavBar />
 
                 <div>

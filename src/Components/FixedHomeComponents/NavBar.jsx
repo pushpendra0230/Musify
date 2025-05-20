@@ -261,7 +261,6 @@ const NavBar = () => {
 
   return (
     <nav className="w-full h-16 bg-black flex items-center justify-between px-4 md:px-6 shadow-md">
-      {/* Logo and Name (Left Section) */}
       <Link to="/homepage" className="flex items-center gap-2">
         <img
           src="https://img.icons8.com/?size=96&id=UpZw1qeZM751&format=png"
@@ -271,7 +270,6 @@ const NavBar = () => {
         <span className="text-lg font-bold text-white hidden md:block">Musify</span>
       </Link>
 
-      {/* Search Bar (Center Section) */}
       <div className="relative flex-1 max-w-full md:max-w-lg mx-4">
         <img
           src="https://img.icons8.com/?size=60&id=59878&format=png"
@@ -287,9 +285,7 @@ const NavBar = () => {
         />
       </div>
 
-      {/* Right Section */}
       <div className="flex items-center gap-2 md:gap-4 ml-2">
-        {/* Notifications Icon */}
         <img
           src="https://cdn-icons-png.flaticon.com/512/1827/1827348.png"
           alt="Notifications"
@@ -297,7 +293,6 @@ const NavBar = () => {
           onClick={goToFavorites}
         />
 
-        {/* Profile Icon */}
         <div
           className="flex items-center justify-center font-semibold cursor-pointer"
           onClick={goToProfile}

@@ -146,7 +146,6 @@ import { Home, Heart, Music, User } from 'lucide-react';
 const SideBar = () => {
   return (
     <aside className="w-64 h-screen bg-gray-900 text-gray-300 flex flex-col gap-2 py-6 px-4">
-      {/* ✅ Logo and Name with Link */}
       <Link to="/homepage" className="flex items-center gap-2 mb-8">
         <img
           src="https://img.icons8.com/?size=96&id=UpZw1qeZM751&format=png"
@@ -156,7 +155,6 @@ const SideBar = () => {
         <span className="text-lg font-bold text-white">Musify</span>
       </Link>
 
-      {/* ✅ Navigation List */}
       <ul className="flex flex-col gap-4">
         <SideBarItem to="/homepage" icon={<Home size={20} />} label="Home" />
         <SideBarItem to="/explore" icon={<Music size={20} />} label="Explore" />

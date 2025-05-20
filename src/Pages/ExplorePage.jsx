@@ -621,7 +621,6 @@ const ExplorePage = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const debounceTimeout = useRef(null);
 
-    // ✅ Fetch default songs when the page loads
     const fetchDefaultSongs = async () => {
         setLoading(true);
         try {
@@ -642,7 +641,6 @@ const ExplorePage = () => {
         }
     };
 
-    // ✅ Fetch searched songs
     const fetchSearchedSongs = async () => {
         if (!search) return;
 
@@ -661,12 +659,10 @@ const ExplorePage = () => {
         }
     };
 
-    // ✅ Fetch default songs on mount
     useEffect(() => {
         fetchDefaultSongs();
     }, []);
 
-    // ✅ Debounced search handling
     useEffect(() => {
         if (debounceTimeout.current) clearTimeout(debounceTimeout.current);
 
@@ -681,7 +677,6 @@ const ExplorePage = () => {
         return () => clearTimeout(debounceTimeout.current);
     }, [search, songs]);
 
-    // ✅ Handle play song
     const playSong = (song) => {
         const highestQuality = song.downloadUrl?.find(file => file.quality === '320kbps') || song.downloadUrl?.[0];
         if (highestQuality) {
@@ -697,16 +692,12 @@ const ExplorePage = () => {
 
     return (
         <section className=" w-screen h-screen overflow-hidden bg-black">
-            {/* ✅ Sidebar */}
             <div className={`fixed top-0 left-0 h-full bg-gray-800 shadow-lg z-30 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 md:translate-x-0 md:w-64`}>
                 <SideBar />
             </div>
 
-            {/* ✅ Main Content */}
             <div className={`flex flex-col h-full ${isSidebarOpen ? 'ml-64' : 'ml-0'} transition-all duration-300 md:ml-64`}>
-                {/* ✅ Navbar */}
                 <div className="h-20 bg-gray-900 shadow-md fixed top-0 left-0 right-0 z-20 flex items-center px-6 md:left-64">
-                    {/* ✅ Sidebar Toggle Button */}
                     <button
                         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                         className="md:hidden text-white mr-4"
@@ -716,9 +707,7 @@ const ExplorePage = () => {
                     <NavBar />
                 </div>
 
-                {/* ✅ Content */}
                 <div className="flex-1 overflow-y-auto mt-20 p-6 bg-gray-900">
-                    {/* ✅ Header */}
                     <div className="flex items-center justify-between mb-6">
                         <h2 className="text-2xl md:text-3xl font-bold flex items-center text-amber-400">
                             <span className="mr-2">🎵</span>
@@ -726,7 +715,6 @@ const ExplorePage = () => {
                         </h2>
                     </div>
 
-                    {/* ✅ Search Bar */}
                     <input
                         type="text"
                         value={search}
@@ -735,7 +723,6 @@ const ExplorePage = () => {
                         className="w-full bg-gray-800 text-white p-3 mb-6 rounded-lg border border-gray-700 focus:outline-none"
                     />
 
-                    {/* ✅ Loader */}
                     {loading ? (
                         <div className="flex justify-center items-center py-10">
                             <div className="w-12 h-12 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin"></div>
@@ -767,7 +754,6 @@ const ExplorePage = () => {
                     )}
                 </div>
 
-                {/* ✅ Music Player */}
                 <div className="fixed bottom-0 left-0 right-0 h-20 bg-gray-900 shadow-md z-20 md:left-64">
                     <MusicPlayer />
                 </div>

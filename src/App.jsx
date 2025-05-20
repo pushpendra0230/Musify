@@ -56,7 +56,6 @@
 //         {/* Render MusicPlayer globally so that it persists across pages */}
 //         <MusicPlayer />
 //         <Routes>
-//           {/* ✅ Set HomePage as the default route */}
 //           <Route path="/" element={<Navigate to="/homepage" />} />
 //           <Route path="/homepage" element={<HomePage />} />
 //           <Route path="/explore" element={<ExplorePage />} />
@@ -76,7 +75,7 @@
 // import HomePage from './Pages/HomePage';
 // import ExplorePage from './Pages/ExplorePage';
 // import FavoritesPage from './Pages/FavoritesPage';
-// import ProfilePage from './Pages/ProfilePage'; // ✅ Import ProfilePage
+// import ProfilePage from './Pages/ProfilePage';
 // import { SearchProvider } from '../src/Components/UseContext/SearchContext';
 // import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 // import MusicPlayer from './Components/FixedHomeComponents/MusicPlayer';
@@ -116,7 +115,6 @@ const App = () => {
 
   return (
     <SearchProvider>
-      {/* Render MusicPlayer only if NOT on ProfilePage */}
       {location.pathname !== '/profile' && <MusicPlayer />}
       <Routes>
         <Route path="/" element={<Navigate to="/homepage" />} />

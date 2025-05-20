@@ -188,7 +188,6 @@ const SongList = () => {
     const [searchResults, setSearchResults] = useState([]);
     const debounceTimeout = useRef(null);
 
-    // ✅ Fetch Songs from API
     const fetchAPI = async () => {
         setLoading(true);
         try {
@@ -198,7 +197,7 @@ const SongList = () => {
                 params: { query: search || 'English', limit: 40 },
             };
             const { data } = await axios.request(options);
-            console.log('API response:', data); // ✅ Log response to verify structure
+            console.log('API response:', data);
             setSearchResults(data?.data?.results || []);
             setSongs(data?.data?.results || []);
         } catch (error) {
@@ -208,7 +207,6 @@ const SongList = () => {
         }
     };
 
-    // ✅ Debounce search input
     useEffect(() => {
         if (debounceTimeout.current) {
             clearTimeout(debounceTimeout.current);
@@ -218,12 +216,10 @@ const SongList = () => {
         }, 300);
     }, [search]);
 
-    // ✅ Initial load
     useEffect(() => {
         fetchAPI();
     }, []);
 
-    // ✅ Filter search results
     useEffect(() => {
         if (search) {
             const filteredSongs = searchResults.filter(song =>
@@ -235,7 +231,6 @@ const SongList = () => {
         }
     }, [search, searchResults]);
 
-    // ✅ Play song function
     const playSong = (song) => {
         if (song.downloadUrl) {
             const highestQuality = song.downloadUrl.find(file => file.quality === '320kbps') || song.downloadUrl[0];
@@ -257,7 +252,6 @@ const SongList = () => {
                 🎵 Music Player Musify
             </h2>
 
-            {/* ✅ Loading Indicator */}
             {loading && (
                 <div className="flex justify-center items-center py-10">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin"></div>
@@ -265,7 +259,6 @@ const SongList = () => {
                 </div>
             )}
 
-            {/* ✅ Song List */}
             <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                 {songs.map(song => (
                     <li
@@ -273,7 +266,6 @@ const SongList = () => {
                         className="group flex items-center bg-gray-800 shadow-md rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer"
                         onClick={() => playSong(song)}
                     >
-                        {/* ✅ Song Image */}
                         <img
                             src={song.image[2]?.url || 'https://img.icons8.com/?size=96&id=UpZw1qeZM751&format=png'}
                             alt={song.name}

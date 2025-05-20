@@ -213,7 +213,6 @@ const App = () => {
     }
   };
 
-  // ✅ Debounce Search Input
   useEffect(() => {
     if (debounceTimeout.current) {
       clearTimeout(debounceTimeout.current);
@@ -225,7 +224,6 @@ const App = () => {
     return () => clearTimeout(debounceTimeout.current);
   }, [search]);
 
-  // ✅ Play Song
   const playSong = (song) => {
     const highestQuality = song.downloadUrl?.find((file) => file.quality === '320kbps') || song.downloadUrl?.[0];
     if (highestQuality) {
@@ -245,7 +243,6 @@ const App = () => {
         🎧 Music Player
       </h2>
 
-      {/* ✅ Loading Indicator */}
       {loading ? (
         <div className="flex justify-center items-center py-10">
           <div className="w-12 h-12 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin"></div>
